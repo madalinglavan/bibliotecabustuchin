@@ -1,0 +1,246 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  position: relative;
+  background-image: url(images/Primaria\ Bustuchin.jpg);
+  background-position: bottom;
+  background-size: cover;
+  background-color: #003366;
+  color: white;
+  padding: 2rem;
+  overflow: hidden;
+  z-index: 0;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 34, 61, 0.445); /* culoare albastru închis transparent */
+  z-index: 1;
+}
+
+header > * {
+  position: relative;
+  z-index: 2; /* asigură că textul apare peste overlay */
+}
+
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo {
+  height: 170px;
+  margin-right: 1rem;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.header-info h1{
+  text-align: center;
+}
+
+.widgets {
+  display: flex;
+  justify-content:space-between;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-style: bold;
+}
+
+.weather-widget-3days {
+  background-color: #f0f4f8;
+  border-radius: 15px;
+  width: 95%;
+  margin: 20px auto;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.weather-widget-3days h3 {
+  margin-bottom: 15px;
+  color: #003366;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.forecast-day {
+  flex: 1 1 30%;
+  margin: 10px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-day img {
+  width: 120px;
+  height: 120px;
+}
+
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 2rem;
+}
+
+.welcome {
+  background-image: url(images/biblioteca.jpg);
+  background-size: cover;
+  background-position: bottom;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #fff;
+}
+.welcome h2{
+  font-size: 2rem;
+}
+.welcome p{
+  text-shadow: 2px 2px  0 rgb(0, 0, 0);
+  font-size: 1.2rem;
+  text-decoration: solid;
+}
+.info ul {
+  padding-left: 1.5rem;
+}
+
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#search-input {
+  width: 60%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#search-input:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 5px rgba(0, 119, 204, 0.5);
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+
+
+
+
+footer {
+  background-color: #003366;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-size: 0.9rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: auto;
+  gap: 30px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-column h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  font-size: 0.8rem;
+}
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
