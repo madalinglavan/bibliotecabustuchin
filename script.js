@@ -132,3 +132,38 @@ document.getElementById('email-card').addEventListener('click', function() {
 document.getElementById('address-card').addEventListener('click', function() {
   window.location.href = 'https://www.google.com/maps?q=Str.+Principală+nr.+66,+Bustuchin,+Gorj';
 });
+
+
+
+
+
+
+
+
+
+
+let startX;
+let scrollLeft;
+
+const slider = document.querySelector('.events-container');
+
+slider.addEventListener('mousedown', (e) => {
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+  slider.style.cursor = 'grabbing';
+});
+
+slider.addEventListener('mouseleave', () => {
+  slider.style.cursor = 'grab';
+});
+
+slider.addEventListener('mouseup', () => {
+  slider.style.cursor = 'grab';
+});
+
+slider.addEventListener('mousemove', (e) => {
+  if (!startX) return;
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 3; // Viteza de mișcare (3x mai rapid decât mișcarea mouse-ului)
+  slider.scrollLeft = scrollLeft - walk;
+});

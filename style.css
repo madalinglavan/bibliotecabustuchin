@@ -28,7 +28,7 @@ header::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 34, 61, 0.445); /* culoare albastru închis transparent */
+  background-color: rgba(0, 34, 61, 0.596); /* culoare albastru închis transparent */
   z-index: 1;
 }
 
@@ -141,18 +141,19 @@ nav a {
 }
 
 main {
-  padding: 2rem;
+  padding: .5rem;
 }
 
 .welcome {
   background-image: url(images/biblioteca.jpg);
   background-size: cover;
   background-position: bottom;
-  padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 2rem;
   text-align: center;
   color: #fff;
+  min-width: 98%;
+  height: 33vh;
 }
 .welcome h2{
   font-size: 2rem;
@@ -437,6 +438,58 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+#evenimente {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.events-container {
+  display: flex;
+  flex-direction: row; /* Plasează evenimentele pe orizontală */
+  gap: 2rem; /* Adaugă un spațiu între evenimente */
+  overflow-x: auto; /* Permite derularea orizontală */
+  scroll-behavior: smooth; /* Permite derularea lină */
+}
+
+.event {
+  flex: 0 0 90%; /* Fiecare eveniment ocupă 90% din lățimea containerului */
+  max-width: 500px; /* Lățimea maximă a fiecărui eveniment */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease-in-out; /* Efect de tranziție */
+}
+
+.event img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.event-title {
+  color: #003366;
+}
+
+.event-location,
+.event-goal {
+  font-size: 1rem;
+  color: #555;
+}
+
+.event-feedback blockquote {
+  font-style: italic;
+  color: #333;
+}
+
+.event:hover {
+  transform: scale(1.05); /* Mărim evenimentul la hover */
+}
+
+
 
 
 
@@ -514,5 +567,24 @@ footer a:hover {
     height: 50px;
     margin: 10px 0;
   }
+  .events-container {
+    flex-direction: column; /* Așezăm evenimentele pe verticală pe ecrane mici */
+    gap: 1rem;
+  }
 }
 
+
+
+
+@media (max-width: 480px) {
+  .contact-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    width:40px;
+    transition: transform 0.5s ease-in-out; /* Durată mai mare și tranziție lină */
+    cursor: pointer;
+  }
+}
