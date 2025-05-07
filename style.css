@@ -1,5 +1,8 @@
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -439,11 +442,12 @@ footer a:hover {
   text-decoration: underline;
 }
 #evenimente {
-  min-width: 100%;
+  min-width: 85%;
+  max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0;
+  justify-content: center;
 }
 
 .events-container {
@@ -456,11 +460,10 @@ footer a:hover {
 
 .event {
   flex: 0 0 90%; /* Fiecare eveniment ocupă 90% din lățimea containerului */
-  max-width: 500px; /* Lățimea maximă a fiecărui eveniment */
+  max-width: 400px; /* Lățimea maximă a fiecărui eveniment */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px;
   transition: transform 0.3s ease-in-out; /* Efect de tranziție */
 }
 
@@ -485,9 +488,6 @@ footer a:hover {
   color: #333;
 }
 
-.event:hover {
-  transform: scale(1.05); /* Mărim evenimentul la hover */
-}
 
 
 
@@ -567,9 +567,13 @@ footer a:hover {
     height: 50px;
     margin: 10px 0;
   }
+
   .events-container {
-    flex-direction: column; /* Așezăm evenimentele pe verticală pe ecrane mici */
+    flex-direction:column-reverse;
     gap: 1rem;
+  }
+  #evenimente{
+    height: 80vh;
   }
 }
 
