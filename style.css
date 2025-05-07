@@ -62,6 +62,8 @@ header > * {
 .header-info h1{
   text-align: center;
   text-transform: uppercase;
+  text-shadow: 12px 0px 10px rgba(0, 0, 0, 0.384);
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .weather-widget-3days {
@@ -124,7 +126,7 @@ nav a {
 
 
 .welcome {
-  background-image: url(images/biblioteca.jpg);
+  background-image: url(images/book-release.jpg);
   background-size: cover;
   background-position: bottom;
   border-radius: 8px;
@@ -137,6 +139,7 @@ nav a {
 }
 .welcome h2{
   font-size: 2rem;
+  
 }
 .welcome p{
   text-shadow: 2px 2px  0 rgb(0, 0, 0);
@@ -283,6 +286,8 @@ section {
   justify-content: center;
   padding: 2rem;
   background-color: #f4f4f4;
+  min-width: 90%;
+  max-width: 100%;
 }
 
 .contact-container {
