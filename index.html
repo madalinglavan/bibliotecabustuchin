@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>Biblioteca Comunală Bustuchin</title>
   <link rel="stylesheet" href="style.css" />
@@ -19,22 +20,43 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Acasă</a></li>
-        <li><a href="#catalog">Catalog</a></li>
-        <li><a href="#evenimente">Evenimente</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html"><i class="fa-solid fa-house"></i> Acasă</a></li>
+        <li><a href="#catalog"><i class="fa-solid fa-book-open"></i> Catalog</a></li>
+        <li><a href="#evenimente"><i class="fa-solid fa-calendar-days"></i> Evenimente</a></li>
+        <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
       </ul>
     </nav>
     
   </header>
 
-  <main>
-    <section class="welcome">
-      <h2>Bine ați venit!</h2>
-      <p>Biblioteca Comunală Bustuchin este un spațiu al cunoașterii și culturii. <br>
-         Vă așteptăm cu drag!</p>
-    </section>
-  </main>
+  <section class="welcome-slider">
+    <div class="slides">
+      <!-- Slide 1: Mesajul de bun venit -->
+      <div class="slide">
+        <h2>Bine ați venit!</h2>
+        <p>Biblioteca Comunală Bustuchin este un spațiu al cunoașterii și culturii. Vă așteptăm cu drag!</p>
+      </div>
+      
+      <!-- Slide 2: Recomandare carte -->
+      <div class="slide">
+        <h3>Recomandare Carte</h3>
+        <p>„Titlul Cărții” este o lectură fascinantă despre...</p>
+      </div>
+  
+      <!-- Slide 3: Eveniment viitor -->
+      <div class="slide">
+        <h3>Eveniment Viitor</h3>
+        <p>Vino la evenimentul nostru din 20 mai pentru...</p>
+      </div>
+  
+      <!-- Poți adăuga mai multe slide-uri aici -->
+    </div>
+  
+    <!-- Butoane pentru navigare -->
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </section>
+  
   <section id="contact">
     <div class="contact-container">
       <!-- Card pentru Telefon -->
@@ -61,7 +83,7 @@
   </section>
   
   <section id="catalog">
-    <h2>📚 Catalogul Cărților</h2>
+    <h2><i class="fa-solid fa-book-open"></i> Catalogul Cărților</h2>
   
     <!-- Căutare dedicată catalogului -->
     <div class="catalog-filters">
@@ -124,7 +146,7 @@
   
   
   <section id="evenimente">
-    <h1>Evenimente</h1>
+    <h1><i class="fa-solid fa-calendar-days"></i> Evenimente</h1>
     <div class="events-container">
       <div class="event">
         <!-- Titlu -->
@@ -290,10 +312,10 @@
       <div class="footer-column">
         <h3>Linkuri utile</h3>
         <ul>
-          <li><a href="index.html">Acasă</a></li>
-          <li><a href="#catalog">Catalog</a></li>
-          <li><a href="#evenimente">Evenimente</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html"><i class="fa-solid fa-house"></i> Acasă</a></li>
+          <li><a href="#catalog"><i class="fa-solid fa-book-open"></i> Catalog</a></li>
+          <li><a href="#evenimente"><i class="fa-solid fa-calendar-days"></i> Evenimente</a></li>
+          <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
         </ul>
       </div>
     </div>

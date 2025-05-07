@@ -152,3 +152,40 @@ function enableHorizontalScroll(containerSelector) {
 // Activezi scrollul pentru ambele containere
 enableHorizontalScroll('.book-grid');
 enableHorizontalScroll('.events-container');
+
+
+
+
+
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+
+// Funcția pentru a schimba slide-ul
+function goToSlide(index) {
+  if (index < 0) {
+    currentSlide = totalSlides - 1;
+  } else if (index >= totalSlides) {
+    currentSlide = 0;
+  } else {
+    currentSlide = index;
+  }
+  
+  const offset = -currentSlide * 100;
+  document.querySelector('.slides').style.transform = `translateX(${offset}%)`;
+}
+
+// Navigare manuală
+prevButton.addEventListener('click', () => goToSlide(currentSlide - 1));
+nextButton.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+// Navigare automată
+setInterval(() => {
+  goToSlide(currentSlide + 1);
+}, 7000); // Schimbă slide-ul la fiecare 5 secunde
+
+// La început, să arătăm primul slide
+goToSlide(currentSlide);

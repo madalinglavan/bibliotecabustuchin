@@ -124,36 +124,6 @@ nav a {
 }
 
 
-
-.welcome {
-  background: #2A7B9B;
-background: linear-gradient(90deg, rgb(10, 59, 78) 0%, rgba(0, 107, 143, 1) 50%, rgba(24, 123, 148, 1) 100%);
-  border-radius: 8px;
-  margin-top: .5rem;
-  text-align: center;
-  color: #fff;
-  min-width: 90%;
-  max-width: 100%;
-  height: 25vh;
-}
-.welcome h2{
-  font-size: 2rem;
-  
-}
-.welcome p{
-  text-shadow: 2px 2px  0 rgb(0, 0, 0);
-  font-size: 1.2rem;
-  text-decoration: solid;
-}
-.info ul {
-  padding-left: 1.5rem;
-}
-
-
-.highlight {
-  background-color: yellow;
-  font-weight: bold;
-}
 .search-container {
   display: flex;
   justify-content: center;
@@ -189,7 +159,7 @@ section {
   min-width: 90%;
 }
 
-#catalog h2 {
+#catalog h2, #evenimente h1 {
   font-size: 2.2rem;
   margin-bottom: 2rem;
 }
@@ -495,6 +465,72 @@ footer a:hover {
 
 
 
+/* Stiluri pentru Slider */
+.welcome-slider {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   background: #2A7B9B;
+  background: linear-gradient(90deg, rgb(10, 59, 78) 0%, rgba(0, 107, 143, 1) 50%, rgba(24, 123, 148, 1) 100%);
+  border-radius: 8px;
+  margin-top: .5rem;
+  text-align: center;
+  color: #fff;
+  min-width: 90%;
+  max-width: 100%;
+  height: 25vh;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+}
+
+.slide h2, .slide h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #003366;
+}
+
+.slide p {
+  font-size: 1rem;
+}
+
+/* Butoane pentru navigare */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  z-index: 10;
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
 
 
