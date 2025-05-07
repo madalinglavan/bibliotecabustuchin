@@ -237,8 +237,6 @@ section {
   .book-grid {
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
     gap: 1rem;
     padding: 1rem;
   }
@@ -246,17 +244,16 @@ section {
   .book-card {
     flex: 0 0 auto; /* nu se micșorează și are lățime fixă */
     width: 200px; /* sau cât dorești */
-    scroll-snap-align: start;
   }
 
   .book-grid,
   .events-container {
-    cursor: grab;
+    cursor:grabbing;
     user-select: none;
     overflow-x: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    transition: transform 0.3s ease-in-out; /* Efect de tranziție */
   }
   
   .book-grid.dragging,
