@@ -106,6 +106,35 @@ header > * {
   height: 80px;
   margin: 10px 0;
 }
+.hour-block {
+  background-color: #eef3f7;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.5rem;
+  font-size: 0.85rem; /* text mai mic */
+}
+
+.hour-block p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.hour-block strong {
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.hour-block img {
+  width: 40px;
+  height: 40px;
+}
 
 
 nav ul {

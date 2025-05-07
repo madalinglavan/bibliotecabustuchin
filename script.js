@@ -2,59 +2,70 @@
 
  
 
-  async function get3DayForecast() {
-    const apiKey = "311b36e4f26a127c91b6860b88c1c8c0";
-    const city = "Bustuchin,RO";
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=ro`;
-  
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Eroare la preluarea prognozei.");
-  
-      const data = await response.json();
-      const forecastList = data.list;
-  
-      const daysMap = {};
-      const addedDays = new Set();
-  
-      for (let i = 0; i < forecastList.length; i++) {
-        const item = forecastList[i];
-        const date = new Date(item.dt_txt);
-        const dayKey = date.toLocaleDateString("ro-RO", { weekday: "long" });
-  
-        if (!addedDays.has(dayKey)) {
-          daysMap[dayKey] = {
-            temp: Math.round(item.main.temp),
-            desc: item.weather[0].description,
-            icon: item.weather[0].icon
-          };
-          addedDays.add(dayKey);
+async function get3DayForecast() {
+  const apiKey = "311b36e4f26a127c91b6860b88c1c8c0";
+  const city = "Bustuchin,RO";
+  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=ro`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Eroare la preluarea prognozei.");
+
+    const data = await response.json();
+    const forecastList = data.list;
+
+    const daysMap = {};
+
+    forecastList.forEach((item) => {
+      const date = new Date(item.dt_txt);
+      const day = date.toLocaleDateString("ro-RO", { weekday: "long" });
+      const hour = date.getHours();
+
+      // Selectăm doar orele: dimineață (9), amiază (15), seară (21)
+      if ([9, 15, 21].includes(hour)) {
+        if (!daysMap[day]) {
+          daysMap[day] = [];
         }
-  
-        if (addedDays.size === 3) break; // doar 3 zile
+
+        daysMap[day].push({
+          hour,
+          temp: Math.round(item.main.temp),
+          desc: item.weather[0].description,
+          icon: item.weather[0].icon,
+        });
       }
-  
-      const forecastContainer = document.getElementById("weather-forecast");
-      forecastContainer.innerHTML = "";
-  
-      for (const day in daysMap) {
-        const forecast = daysMap[day];
-        const iconUrl = `https://openweathermap.org/img/wn/${forecast.icon}@2x.png`;
-  
-        forecastContainer.innerHTML += `
-          <div class="forecast-day">
-            <h4>${day.charAt(0).toUpperCase() + day.slice(1)}</h4>
-            <img src="${iconUrl}" alt="${forecast.desc}" />
-            <p>${forecast.temp}°C</p>
-            <p>${forecast.desc}</p>
+    });
+
+    const forecastContainer = document.getElementById("weather-forecast");
+    forecastContainer.innerHTML = "";
+
+    const days = Object.keys(daysMap).slice(0, 3); // doar 3 zile
+
+    days.forEach((day) => {
+      const forecasts = daysMap[day];
+      let forecastHTML = `<div class="forecast-day"><h4>${day.charAt(0).toUpperCase() + day.slice(1)}</h4>`;
+
+      forecasts.forEach((entry) => {
+        const iconUrl = `https://openweathermap.org/img/wn/${entry.icon}@2x.png`;
+        forecastHTML += `
+          <div class="hour-block">
+            <p><strong>${entry.hour}:00</strong></p>
+            <img src="${iconUrl}" alt="${entry.desc}" />
+            <p>${entry.temp}°C</p>
+            <p>${entry.desc}</p>
           </div>
         `;
-      }
-    } catch (error) {
-      document.getElementById("weather-forecast").textContent = "Vremea indisponibilă momentan.";
-      console.error("Eroare prognoză:", error);
-    }
+      });
+
+      forecastHTML += `</div>`;
+      forecastContainer.innerHTML += forecastHTML;
+    });
+  } catch (error) {
+    document.getElementById("weather-forecast").textContent = "Vremea indisponibilă momentan.";
+    console.error("Eroare prognoză:", error);
   }
+}
+
   
   get3DayForecast();
   
