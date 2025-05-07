@@ -1,48 +1,6 @@
-// Afișare ceas în timp real
-function updateClock() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('ro-RO');
-    document.getElementById('clock-widget').textContent = ` ${timeString}`;
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-  
 
 
-  document.getElementById('search-input').addEventListener('input', function () {
-    const searchTerm = this.value.trim().toLowerCase();
-  
-    // Funcție pentru eliminarea evidențierilor anterioare
-    function removeHighlights() {
-      document.querySelectorAll('.highlight').forEach(span => {
-        const parent = span.parentNode;
-        parent.replaceChild(document.createTextNode(span.textContent), span);
-        parent.normalize();
-      });
-    }
-  
-    removeHighlights();
-  
-    if (searchTerm.length < 2) return;
-  
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-    const matches = [];
-  
-    while (walker.nextNode()) {
-      const node = walker.currentNode;
-      if (node.parentNode && node.nodeValue.toLowerCase().includes(searchTerm)) {
-        const span = document.createElement('span');
-        const regex = new RegExp(`(${searchTerm})`, 'gi');
-        span.innerHTML = node.nodeValue.replace(regex, '<span class="highlight">$1</span>');
-        const wrapper = document.createElement('span');
-        wrapper.innerHTML = span.innerHTML;
-        node.parentNode.replaceChild(wrapper, node);
-      }
-    }
-  });
-  
-
-
+ 
 
   async function get3DayForecast() {
     const apiKey = "311b36e4f26a127c91b6860b88c1c8c0";
