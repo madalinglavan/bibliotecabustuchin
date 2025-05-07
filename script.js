@@ -100,3 +100,35 @@ function updateClock() {
   
   get3DayForecast();
   
+
+
+
+  document.getElementById('catalog-search').addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    document.querySelectorAll('.book-card').forEach(card => {
+      const text = card.textContent.toLowerCase();
+      card.style.display = text.includes(query) ? 'block' : 'none';
+    });
+  });
+
+
+
+
+
+
+
+
+  // Funcționalitate pentru apelare telefonică
+document.getElementById('phone-card').addEventListener('click', function() {
+  window.location.href = 'tel:+40123456789';
+});
+
+// Funcționalitate pentru trimiterea unui email
+document.getElementById('email-card').addEventListener('click', function() {
+  window.location.href = 'mailto:bibliotecabustuchin@gmail.com';
+});
+
+// Funcționalitate pentru deschiderea Google Maps
+document.getElementById('address-card').addEventListener('click', function() {
+  window.location.href = 'https://www.google.com/maps?q=Str.+Principală+nr.+66,+Bustuchin,+Gorj';
+});

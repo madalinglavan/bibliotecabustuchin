@@ -58,6 +58,7 @@ header > * {
 }
 .header-info h1{
   text-align: center;
+  text-transform: uppercase;
 }
 
 .widgets {
@@ -179,8 +180,197 @@ section {
   margin: auto;
 }
 
+#catalog {
+  background-color: #f8f9fa;
+  padding: 3rem 1rem;
+  text-align: center;
+  min-width: 90%;
+}
 
+#catalog h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
 
+.catalog-section {
+  padding: 2rem;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.catalog-filters {
+  margin-bottom: 1rem;
+}
+
+#catalog-search {
+  padding: 0.5rem;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.book-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.book-card:hover {
+  transform: scale(1.03);
+}
+
+.book-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.status {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.available {
+  color: green;
+}
+
+.unavailable {
+  color: red;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.book-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 250px;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.badge.available {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.badge.unavailable {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Stilizare generală pentru Contact */
+#contact {
+  display: flex;
+  min-width: fit-content;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #f4f4f4;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  
+}
+
+.contact-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  width: 200px;
+  transition: transform 0.5s ease-in-out; /* Durată mai mare și tranziție lină */
+  cursor: pointer;
+}
+
+.contact-card:hover {
+  transform: scale(1.05);
+}
+
+.contact-card i {
+  font-size: 3rem;
+  color: #003366;
+  margin-bottom: 1rem;
+}
+
+.contact-card h3 {
+  font-size: 1.2rem;
+  color: #003366;
+}
+
+.contact-info {
+  display: none;
+  font-size: .7rem;
+  color: #333;
+}
+
+.contact-card:hover .contact-info {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+/* Hover și click pentru fiecare card */
+#phone-card:hover {
+  background-color: #e0f7fa;
+}
+
+#phone-card:active {
+  background-color: #b2ebf2;
+}
+
+#email-card:hover {
+  background-color: #ffecb3;
+}
+
+#email-card:active {
+  background-color: #ffe082;
+}
+
+#address-card:hover {
+  background-color: #c8e6c9;
+}
+
+#address-card:active {
+  background-color: #a5d6a7;
+}
 
 
 footer {
@@ -243,4 +433,79 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  /* Aici scrii stiluri speciale pentru ecrane mici */
+
+  header {
+    padding: 1rem 0.5rem;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .forecast-container {
+    flex-direction: column;
+  }
+
+  .forecast-day {
+    margin-bottom: 20px;
+    flex: 1 1 100%;
+  }
+
+  .logo-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #search-bar {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  #contact {
+
+  }
+  
+  .contact-container {
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    min-width: 100%;
+    
+  }
+  .contact-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    width:50px;
+    transition: transform 0.5s ease-in-out; /* Durată mai mare și tranziție lină */
+    cursor: pointer;
+  }
+  .contact-card i {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 1rem;
+  }
+  .contact-card h3 {
+    font-size: .8rem;
+    color: #003366;
+  }
+ #phone-hover, #email-hover, #address-hover{
+    display: none;
+  }
 }
