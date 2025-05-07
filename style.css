@@ -126,9 +126,8 @@ nav a {
 
 
 .welcome {
-  background-image: url(images/book-release.jpg);
-  background-size: cover;
-  background-position: bottom;
+  background: #2A7B9B;
+background: linear-gradient(90deg, rgb(10, 59, 78) 0%, rgba(0, 107, 143, 1) 50%, rgba(24, 123, 148, 1) 100%);
   border-radius: 8px;
   margin-top: .5rem;
   text-align: center;
@@ -234,12 +233,37 @@ section {
   color: red;
 }
 
-.book-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  justify-content: center;
-  gap: 1.5rem;
-}
+
+  .book-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .book-card {
+    flex: 0 0 auto; /* nu se micșorează și are lățime fixă */
+    width: 200px; /* sau cât dorești */
+    scroll-snap-align: start;
+  }
+
+  .book-grid,
+  .events-container {
+    cursor: grab;
+    user-select: none;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .book-grid.dragging,
+  .events-container.dragging {
+    cursor: grabbing;
+  }
+  
 
 .book-card {
   background: white;
@@ -284,7 +308,6 @@ section {
   display: flex;
   min-width: fit-content;
   justify-content: center;
-  padding: 2rem;
   background-color: #f4f4f4;
   min-width: 90%;
   max-width: 100%;
@@ -544,9 +567,6 @@ footer a:hover {
     display: none;
   }
 
-  .book-grid {
-    grid-template-columns: repeat(2, 1fr); /* 3 elemente pe rând */
-  }
 
   .forecast-day {
     flex: 1 1 20%;
@@ -560,9 +580,11 @@ footer a:hover {
   .events-container {
     flex-direction:column-reverse;
     gap: 1rem;
+    width: 100%;
   }
   #evenimente{
-    height: 80vh;
+    
+    height: 90vh;
   }
   
 }

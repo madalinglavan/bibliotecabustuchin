@@ -96,32 +96,59 @@ document.getElementById('address-card').addEventListener('click', function() {
 
 
 
+function enableHorizontalScroll(containerSelector) {
+  const slider = document.querySelector(containerSelector);
+  if (!slider) return;
 
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
 
+  // Mouse Events
+  slider.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    slider.classList.add('dragging');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
 
+  slider.addEventListener('mouseleave', () => {
+    isDragging = false;
+    slider.classList.remove('dragging');
+  });
 
-let startX;
-let scrollLeft;
+  slider.addEventListener('mouseup', () => {
+    isDragging = false;
+    slider.classList.remove('dragging');
+  });
 
-const slider = document.querySelector('.events-container');
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2; // viteza
+    slider.scrollLeft = scrollLeft - walk;
+  });
 
-slider.addEventListener('mousedown', (e) => {
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-  slider.style.cursor = 'grabbing';
-});
+  // Touch Events (pentru mobil)
+  slider.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
 
-slider.addEventListener('mouseleave', () => {
-  slider.style.cursor = 'grab';
-});
+  slider.addEventListener('touchend', () => {
+    isDragging = false;
+  });
 
-slider.addEventListener('mouseup', () => {
-  slider.style.cursor = 'grab';
-});
+  slider.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+}
 
-slider.addEventListener('mousemove', (e) => {
-  if (!startX) return;
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 3; // Viteza de mișcare (3x mai rapid decât mișcarea mouse-ului)
-  slider.scrollLeft = scrollLeft - walk;
-});
+// Activezi scrollul pentru ambele containere
+enableHorizontalScroll('.book-grid');
+enableHorizontalScroll('.events-container');
