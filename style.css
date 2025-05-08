@@ -393,21 +393,20 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 1000px;
-  margin: auto;
-  gap: 30px;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #003366;
+  color: #fff;
 }
 
 .footer-column {
-  flex: 1;
+  flex: 1 1 200px;
   min-width: 220px;
 }
 
 .footer-column h3 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 5px;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
 }
 
 .footer-column ul {
@@ -415,8 +414,13 @@ footer {
   padding: 0;
 }
 
-.footer-column ul li {
-  margin-bottom: 8px;
+.footer-column li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-column li i {
+  margin-right: 0.5rem;
+  color: #ffc107;
 }
 
 .footer-column a {
@@ -428,21 +432,24 @@ footer {
   text-decoration: underline;
 }
 
-.footer-bottom {
-  text-align: center;
-  margin-top: 30px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
-  font-size: 0.8rem;
-}
-footer a {
+.social-icons a {
   color: #fff;
-  text-decoration: none;
+  margin-right: 1rem;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
 }
 
-footer a:hover {
-  text-decoration: underline;
+.social-icons a:hover {
+  color: #ffc107;
 }
+
+.footer-bottom {
+  text-align: center;
+  background-color: #002244;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
 #evenimente {
   min-width: 85%;
   max-width: 90%;
