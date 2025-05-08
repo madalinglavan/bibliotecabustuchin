@@ -500,8 +500,7 @@ footer {
 
 
 
-
-/* Stiluri pentru Slider */
+/* Stiluri pentru Slider Principal */
 .welcome-slider {
   position: relative;
   max-width: 100%;
@@ -509,7 +508,7 @@ footer {
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-   background: #2A7B9B;
+  background: #2A7B9B;
   background: linear-gradient(90deg, rgb(10, 59, 78) 0%, rgba(0, 107, 143, 1) 50%, rgba(24, 123, 148, 1) 100%);
   border-radius: 8px;
   margin-top: .5rem;
@@ -520,30 +519,30 @@ footer {
   height: 25vh;
 }
 
-.slides {
+.main-slides {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
 
-.slide {
+.main-slide {
   min-width: 100%;
   box-sizing: border-box;
   padding: 20px;
   text-align: center;
 }
 
-.slide h2, .slide h3 {
+.main-slide h2, .main-slide h3 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #003366;
 }
 
-.slide p {
+.main-slide p {
   font-size: 1rem;
 }
 
-/* Butoane pentru navigare */
-.prev, .next {
+/* Butoane pentru navigare slider principal */
+.main-prev, .main-next {
   position: absolute;
   top: 50%;
   background-color: rgba(0, 0, 0, 0.158);
@@ -556,17 +555,18 @@ footer {
   transform: translateY(-50%);
 }
 
-.prev {
+.main-prev {
   left: 10px;
 }
 
-.next {
+.main-next {
   right: 10px;
 }
 
-.prev:hover, .next:hover {
+.main-prev:hover, .main-next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
 
 .modal {
   display: none;
@@ -574,32 +574,69 @@ footer {
   z-index: 9999;
   left: 0; top: 0;
   width: 100%; height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,0.7);
+  overflow-y: auto;
 }
 
 .modal-content {
-  background-color: #fff;
+  background: #fff;
   margin: 5% auto;
   padding: 20px;
   border-radius: 10px;
   width: 90%;
   max-width: 800px;
   position: relative;
-  animation: fadeIn 0.3s ease-in-out;
 }
 
 .close-btn {
   position: absolute;
-  top: 10px; right: 20px;
+  top: 15px;
+  right: 20px;
   font-size: 30px;
   cursor: pointer;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+.slider {
+  position: relative;
+  text-align: center;
+  margin: 20px 0;
 }
+/* Slider Vertical (Modal) */
+.slides-container {
+  display: flex;
+  overflow: hidden;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+}
+
+.slides-container img {
+  display: none;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: opacity 0.5s ease;
+}
+
+.slides-container img.active {
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
 
 
 

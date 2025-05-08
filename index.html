@@ -52,32 +52,31 @@
     </nav>
   </header>
   <section class="welcome-slider">
-    <div class="slides">
-      <!-- Slide 1: Mesajul de bun venit -->
-      <div class="slide">
+    <div class="main-slides">
+      <!-- Slide 1 -->
+      <div class="main-slide">
         <h2>Bine ați venit!</h2>
         <p>Biblioteca Comunală Bustuchin este un spațiu al cunoașterii și culturii. Vă așteptăm cu drag!</p>
       </div>
-      
-      <!-- Slide 2: Recomandare carte -->
-      <div class="slide">
+  
+      <!-- Slide 2 -->
+      <div class="main-slide">
         <h3>Recomandare Carte</h3>
         <p>„Titlul Cărții” este o lectură fascinantă despre...</p>
       </div>
   
-      <!-- Slide 3: Eveniment viitor -->
-      <div class="slide">
+      <!-- Slide 3 -->
+      <div class="main-slide">
         <h3>Eveniment Viitor</h3>
         <p>Vino la evenimentul nostru din 20 mai pentru...</p>
       </div>
-  
-      <!-- Poți adăuga mai multe slide-uri aici -->
     </div>
   
     <!-- Butoane pentru navigare -->
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
+    <button class="main-prev">&#10094;</button>
+    <button class="main-next">&#10095;</button>
   </section>
+  
   
   
   
@@ -264,14 +263,31 @@
       </div>
     </div>
   </section>
-  <div id="event-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <div id="modal-body">
-        <!-- Detalii dinamice vor fi inserate aici -->
-      </div>
+  <!-- Modalul pentru eveniment -->
+<div id="event-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div id="modal-details">
+      <h2 id="modal-title"></h2>
+      <p><strong>Data:</strong> <span id="modal-date"></span></p>
+      <p><strong>Locația:</strong> <span id="modal-location"></span></p>
+      <p><strong>Obiectiv:</strong> <span id="modal-goal"></span></p>
+    </div>
+
+    <!-- Slider imagini -->
+    <div class="slider">
+      <button class="prev">&#10094;</button>
+      <div class="slides-container" id="modal-slides"></div>
+      <button class="next">&#10095;</button>
+    </div>
+
+    <div id="modal-feedback">
+      <h3>Impresii ale participanților</h3>
+      <div id="modal-quotes"></div>
     </div>
   </div>
+</div>
+
   
   <section id="contact">
     <div class="contact-container">

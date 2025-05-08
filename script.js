@@ -167,58 +167,110 @@ enableHorizontalScroll('.events-container');
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  // Acum toate elementele sunt disponibile, deci putem face selecții
 
-
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const totalSlides = slides.length;
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-
-// Funcția pentru a schimba slide-ul
-function goToSlide(index) {
-  if (index < 0) {
-    currentSlide = totalSlides - 1;
-  } else if (index >= totalSlides) {
-    currentSlide = 0;
-  } else {
-    currentSlide = index;
-  }
-  
-  const offset = -currentSlide * 100;
-  document.querySelector('.slides').style.transform = `translateX(${offset}%)`;
-}
-
-// Navigare manuală
-prevButton.addEventListener('click', () => goToSlide(currentSlide - 1));
-nextButton.addEventListener('click', () => goToSlide(currentSlide + 1));
-
-// Navigare automată
-setInterval(() => {
-  goToSlide(currentSlide + 1);
-}, 7000); // Schimbă slide-ul la fiecare 5 secunde
-
-// La început, să arătăm primul slide
-goToSlide(currentSlide);
-
-
-
-document.querySelectorAll('.event').forEach(eventCard => {
-  eventCard.addEventListener('click', () => {
-    const modal = document.getElementById('event-modal');
-    const modalBody = document.getElementById('modal-body');
-    modalBody.innerHTML = eventCard.innerHTML;
-    modal.style.display = 'block';
-  });
-});
-
-document.querySelector('.close-btn').addEventListener('click', () => {
-  document.getElementById('event-modal').style.display = 'none';
-});
-
-window.addEventListener('click', (e) => {
+  // Variabile pentru modal
   const modal = document.getElementById('event-modal');
-  if (e.target === modal) {
-    modal.style.display = 'none';
+  const modalTitle = document.getElementById('modal-title');
+  const modalDate = document.getElementById('modal-date');
+  const modalLocation = document.getElementById('modal-location');
+  const modalGoal = document.getElementById('modal-goal');
+  const modalSlides = document.getElementById('modal-slides');
+  const modalQuotes = document.getElementById('modal-quotes');
+  const closeBtn = document.querySelector('.close-btn');
+
+  // =====================
+  // Slider Modal
+  let currentSlideModal = 0;
+
+  function changeSlideModal(direction) {
+    const slides = modalSlides.querySelectorAll('img');
+    if (slides.length === 0) return;
+
+    slides[currentSlideModal].classList.remove('active');
+    currentSlideModal = (currentSlideModal + direction + slides.length) % slides.length;
+    slides[currentSlideModal].classList.add('active');
   }
+
+  document.querySelector('.modal .prev').addEventListener('click', () => changeSlideModal(-1));
+  document.querySelector('.modal .next').addEventListener('click', () => changeSlideModal(1));
+
+  // =====================
+  // Deschidere Modal
+  document.querySelectorAll('.event').forEach(event => {
+    event.addEventListener('click', () => {
+      modalTitle.textContent = event.querySelector('.event-title')?.textContent || '';
+      modalDate.textContent = event.querySelector('.event-date')?.textContent.replace("Data:", "").trim() || '';
+      modalLocation.textContent = event.querySelector('.event-location')?.textContent.replace("Locația:", "").trim() || '';
+      modalGoal.textContent = event.querySelector('.event-goal')?.textContent.replace("Obiectiv:", "").trim() || '';
+
+      // Slider imagini
+      const images = event.querySelectorAll('.event-media img');
+      modalSlides.innerHTML = '';
+      images.forEach((img, index) => {
+        const slideImg = document.createElement('img');
+        slideImg.src = img.src;
+        slideImg.alt = img.alt || '';
+        if (index === 0) slideImg.classList.add('active');
+        modalSlides.appendChild(slideImg);
+      });
+      currentSlideModal = 0;
+
+      // Feedback
+      modalQuotes.innerHTML = '';
+      event.querySelectorAll('.event-feedback blockquote').forEach(q => {
+        const bq = document.createElement('blockquote');
+        bq.textContent = q.textContent;
+        modalQuotes.appendChild(bq);
+      });
+
+      modal.style.display = 'block';
+    });
+  });
+
+  // =====================
+  // Închidere Modal
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  let mainCurrentSlide = 0;
+  const mainSlides = document.querySelectorAll('.main-slide');
+  const mainTotalSlides = mainSlides.length;
+  const mainPrevButton = document.querySelector('.main-prev');
+  const mainNextButton = document.querySelector('.main-next');
+  const mainSlidesContainer = document.querySelector('.main-slides');
+
+  function goToMainSlide(index) {
+    if (index < 0) {
+      mainCurrentSlide = mainTotalSlides - 1;
+    } else if (index >= mainTotalSlides) {
+      mainCurrentSlide = 0;
+    } else {
+      mainCurrentSlide = index;
+    }
+
+    const offset = -mainCurrentSlide * 100;
+    mainSlidesContainer.style.transform = `translateX(${offset}%)`;
+  }
+
+  mainPrevButton?.addEventListener('click', () => goToMainSlide(mainCurrentSlide - 1));
+  mainNextButton?.addEventListener('click', () => goToMainSlide(mainCurrentSlide + 1));
+
+  setInterval(() => {
+    goToMainSlide(mainCurrentSlide + 1);
+  }, 7000);
+
+  goToMainSlide(mainCurrentSlide);
 });
