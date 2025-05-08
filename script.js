@@ -167,77 +167,57 @@ enableHorizontalScroll('.events-container');
 
 
 
-// ==========================
-// Slider General în Modal
-// ==========================
+
+
 let currentSlide = 0;
-const modal = document.getElementById('event-modal');
-const modalTitle = document.getElementById('modal-title');
-const modalDate = document.getElementById('modal-date');
-const modalLocation = document.getElementById('modal-location');
-const modalGoal = document.getElementById('modal-goal');
-const modalSlides = document.getElementById('modal-slides');
-const modalQuotes = document.getElementById('modal-quotes');
-const closeBtn = document.querySelector('.close-btn');
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
 
-function showSlide(index) {
-  const slides = modalSlides.querySelectorAll('img');
-  if (slides.length === 0) return;
-
-  slides.forEach(slide => slide.classList.remove('active'));
-  slides[index].classList.add('active');
-  currentSlide = index;
+// Funcția pentru a schimba slide-ul
+function goToSlide(index) {
+  if (index < 0) {
+    currentSlide = totalSlides - 1;
+  } else if (index >= totalSlides) {
+    currentSlide = 0;
+  } else {
+    currentSlide = index;
+  }
+  
+  const offset = -currentSlide * 100;
+  document.querySelector('.slides').style.transform = `translateX(${offset}%)`;
 }
 
-function changeSlide(direction) {
-  const slides = modalSlides.querySelectorAll('img');
-  if (slides.length === 0) return;
+// Navigare manuală
+prevButton.addEventListener('click', () => goToSlide(currentSlide - 1));
+nextButton.addEventListener('click', () => goToSlide(currentSlide + 1));
 
-  let newIndex = currentSlide + direction;
-  if (newIndex < 0) newIndex = slides.length - 1;
-  if (newIndex >= slides.length) newIndex = 0;
+// Navigare automată
+setInterval(() => {
+  goToSlide(currentSlide + 1);
+}, 7000); // Schimbă slide-ul la fiecare 5 secunde
 
-  showSlide(newIndex);
-}
+// La început, să arătăm primul slide
+goToSlide(currentSlide);
 
-document.querySelector('.prev').addEventListener('click', () => changeSlide(-1));
-document.querySelector('.next').addEventListener('click', () => changeSlide(1));
 
-document.querySelectorAll('.event').forEach(event => {
-  event.addEventListener('click', () => {
-    modalTitle.textContent = event.querySelector('.event-title')?.textContent || '';
-    modalDate.textContent = event.querySelector('.event-date')?.textContent.replace("Data:", "").trim() || '';
-    modalLocation.textContent = event.querySelector('.event-location')?.textContent.replace("Locația:", "").trim() || '';
-    modalGoal.textContent = event.querySelector('.event-goal')?.textContent.replace("Obiectiv:", "").trim() || '';
 
-    const images = event.querySelectorAll('.event-media img');
-    modalSlides.innerHTML = "";
-
-    images.forEach((img, index) => {
-      const slideImg = document.createElement('img');
-      slideImg.src = img.src;
-      slideImg.alt = img.alt || '';
-      modalSlides.appendChild(slideImg);
-    });
-
-    showSlide(0); // afiseaza primul slide
-
-    modalQuotes.innerHTML = "";
-    event.querySelectorAll('.event-feedback blockquote').forEach(q => {
-      const bq = document.createElement('blockquote');
-      bq.textContent = q.textContent;
-      modalQuotes.appendChild(bq);
-    });
-
+document.querySelectorAll('.event').forEach(eventCard => {
+  eventCard.addEventListener('click', () => {
+    const modal = document.getElementById('event-modal');
+    const modalBody = document.getElementById('modal-body');
+    modalBody.innerHTML = eventCard.innerHTML;
     modal.style.display = 'block';
   });
 });
 
-closeBtn.addEventListener('click', () => {
-  modal.style.display = 'none';
+document.querySelector('.close-btn').addEventListener('click', () => {
+  document.getElementById('event-modal').style.display = 'none';
 });
 
 window.addEventListener('click', (e) => {
+  const modal = document.getElementById('event-modal');
   if (e.target === modal) {
     modal.style.display = 'none';
   }
