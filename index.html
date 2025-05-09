@@ -32,8 +32,12 @@
     <meta property="og:image" content="images/og-image.jpg" />
     <meta property="og:url" content="https://bibliotecabustuchin.ro" />
     <meta property="og:type" content="website" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
   </head>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
 <body>
   <header>
     <div class="logo-container">
@@ -245,11 +249,14 @@
         <!-- Obiectivul -->
         <p class="event-goal"><strong>Obiectiv:</strong> Promovarea</p>
       
-        <!-- Fișiere Media (Galerie sau Slider) -->
+        <!-- Fișiere Media (Galerie cu Lightbox) -->
         <div class="event-media">
-          <img src="images/book-release2.jpg" alt="Eveniment Lansare Carte" class="media-image">
-          <img src="images/book-release.jpg" alt="Eveniment Lansare Carte 2" class="media-image">
-          <!-- Poți adăuga un video sau un slider de imagini aici -->
+          <a href="images/book-release.jpg" data-lightbox="eveniment1" data-title="Eveniment Lansare Carte 1">
+            <img src="images/book-release.jpg" alt="Eveniment Lansare Carte" class="media-image">
+          </a>
+          <a href="images/book-release2.jpg" data-lightbox="eveniment1" data-title="Eveniment Lansare Carte 2">
+            <img src="images/book-release2.jpg" alt="Eveniment Lansare Carte 2" class="media-image">
+          </a>
         </div>
       
         <!-- Feedback -->
