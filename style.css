@@ -658,7 +658,6 @@ footer {
   .header-info h1{
     text-align: center;
     text-transform: uppercase;
-    font: 1em sans-serif;
   }
   .logo-container {
     flex-direction: column;
