@@ -14,7 +14,7 @@ body {
 
 header {
   position: relative;
-  background-image: url(images/Primaria\ Bustuchin.jpg);
+  background-image: url(images/biblioteca.jpg);
   background-position: bottom;
   background-size: cover;
   background-color: #003366;
@@ -45,12 +45,12 @@ header > * {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .logo {
-  height: 170px;
+  height: 200px;
   margin-right: 1rem;
 }
 
@@ -144,6 +144,7 @@ nav ul {
   gap: 2rem;
   padding: 0;
   margin: 1rem 0 0 0;
+  font-size: 1.5rem;
 }
 
 nav a {
@@ -247,7 +248,6 @@ section {
 
   .book-grid,
   .events-container {
-    cursor:grabbing;
     user-select: none;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -257,7 +257,7 @@ section {
   
   .book-grid.dragging,
   .events-container.dragging {
-    cursor: grabbing;
+    
   }
   
 
@@ -652,6 +652,7 @@ footer {
 
   nav ul {
     align-items: center;
+    font-size: 1.1rem;
   }
   .welcome{
     height: 33vh;
