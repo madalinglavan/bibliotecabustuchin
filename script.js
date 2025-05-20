@@ -244,33 +244,50 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  let mainCurrentSlide = 0;
-  const mainSlides = document.querySelectorAll('.main-slide');
-  const mainTotalSlides = mainSlides.length;
-  const mainPrevButton = document.querySelector('.main-prev');
-  const mainNextButton = document.querySelector('.main-next');
-  const mainSlidesContainer = document.querySelector('.main-slides');
+let currentMainSlide = 0;
+const mainSlides = document.querySelectorAll('.main-slide');
+const totalMainSlides = mainSlides.length;
+const mainSlider = document.querySelector('.welcome-slider');
+const mainPrevButton = document.querySelector('.main-prev');
+const mainNextButton = document.querySelector('.main-next');
 
-  function goToMainSlide(index) {
-    if (index < 0) {
-      mainCurrentSlide = mainTotalSlides - 1;
-    } else if (index >= mainTotalSlides) {
-      mainCurrentSlide = 0;
-    } else {
-      mainCurrentSlide = index;
-    }
+// Culori/gradienți pentru fiecare slide
+const slideBackgrounds = [
+  "linear-gradient(90deg, rgb(10, 59, 78) 0%, rgba(0, 107, 143, 1) 50%, rgba(24, 123, 148, 1) 100%)",
+  "linear-gradient(90deg, #6a0572 0%, #ab83a1 50%, #f3d9fa 100%)",
+  "linear-gradient(90deg, #004e92 0%,rgb(159, 165, 221) 100%)",
+  "linear-gradient(90deg, #1d976c 0%, #93f9b9 100%)",
+  "linear-gradient(90deg, #6a0572 0%, #ab83a1 50%, #f3d9fa 100%)",
+  "linear-gradient(90deg, #004e92 0%,rgb(159, 165, 221) 100%)",
+  "linear-gradient(90deg, #1d976c 0%, #93f9b9 100%)"
+];
 
-    const offset = -mainCurrentSlide * 100;
-    mainSlidesContainer.style.transform = `translateX(${offset}%)`;
+
+// Funcția care schimbă slide-ul și culoarea
+function goToMainSlide(index) {
+  if (index < 0) {
+    currentMainSlide = totalMainSlides - 1;
+  } else if (index >= totalMainSlides) {
+    currentMainSlide = 0;
+  } else {
+    currentMainSlide = index;
   }
 
-  mainPrevButton?.addEventListener('click', () => goToMainSlide(mainCurrentSlide - 1));
-  mainNextButton?.addEventListener('click', () => goToMainSlide(mainCurrentSlide + 1));
+  const offset = -currentMainSlide * 100;
+  document.querySelector('.main-slides').style.transform = `translateX(${offset}%)`;
 
-  setInterval(() => {
-    goToMainSlide(mainCurrentSlide + 1);
-  }, 7000);
+  // Schimbăm fundalul secțiunii welcome-slider
+  mainSlider.style.background = slideBackgrounds[currentMainSlide];
+}
 
-  goToMainSlide(mainCurrentSlide);
-});
+// Navigare manuală
+mainPrevButton.addEventListener('click', () => goToMainSlide(currentMainSlide - 1));
+mainNextButton.addEventListener('click', () => goToMainSlide(currentMainSlide + 1));
+
+// Navigare automată
+setInterval(() => {
+  goToMainSlide(currentMainSlide + 1);
+}, 10000); // La fiecare 10 secunde
+
+// Inițializare
+goToMainSlide(currentMainSlide);

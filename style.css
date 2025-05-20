@@ -255,11 +255,7 @@ section {
     transition: transform 0.3s ease-in-out; /* Efect de tranziție */
   }
   
-  .book-grid.dragging,
-  .events-container.dragging {
-    
-  }
-  
+
 
 .book-card {
   background: white;
@@ -530,6 +526,8 @@ footer {
   padding: 20px;
   text-align: center;
 }
+
+
 
 .main-slide h2, .main-slide h3 {
   font-size: 2rem;
