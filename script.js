@@ -287,7 +287,7 @@ mainNextButton.addEventListener('click', () => goToMainSlide(currentMainSlide + 
 // Navigare automată
 setInterval(() => {
   goToMainSlide(currentMainSlide + 1);
-}, 10000); // La fiecare 10 secunde
+}, 20000); // La fiecare 10 secunde
 
 // Inițializare
 goToMainSlide(currentMainSlide);
